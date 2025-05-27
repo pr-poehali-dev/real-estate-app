@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
@@ -10,6 +11,7 @@ interface SearchBarProps {
 
 const SearchBar = ({ onSearch, onFilterClick }: SearchBarProps) => {
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +36,7 @@ const SearchBar = ({ onSearch, onFilterClick }: SearchBarProps) => {
         </div>
         <Button
           type="button"
-          onClick={onFilterClick}
+          onClick={() => navigate("/filters")}
           variant="outline"
           className="h-12 px-4 border-gray-200 hover:bg-gray-50"
         >
